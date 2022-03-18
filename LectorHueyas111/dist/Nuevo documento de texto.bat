@@ -1,0 +1,1 @@
+java -jar LectorHueyas.jar
