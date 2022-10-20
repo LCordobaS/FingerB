@@ -9,6 +9,7 @@ package BD;
  * @author Isaac
  */
 import java.sql.Connection;
+import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,12 +28,23 @@ public class ConexionBD {
 *    @author: Napster2011
 *  @access: public
 */
+    /*
     public  String puerto="3306";
     public  String nomservidor="blslrlwy0ckh6h5o0hl9-mysql.services.clever-cloud.com";
     public  String bd="blslrlwy0ckh6h5o0hl9";
-    static String url = "jdbc:mysql://usnetzlulepfmhm0:dnHZhUzZNmz7zphiQtPL@blslrlwy0ckh6h5o0hl9-mysql.services.clever-cloud.com:3306/blslrlwy0ckh6h5o0hl9";
+    static String url = "mysql://usnetzlulepfmhm0:dnHZhUzZNmz7zphiQtPL@blslrlwy0ckh6h5o0hl9-mysql.services.clever-cloud.com:3306/blslrlwy0ckh6h5o0hl9";
     static String user = "usnetzlulepfmhm0";
-    static String pass = "dnHZhUzZNmz7zphiQtPL";
+    static String pass = "dnHZhUzZNmz7zphiQtPL";*/
+    
+    
+    public String MYSQL_ADDON_HOST="blslrlwy0ckh6h5o0hl9-mysql.services.clever-cloud.com";
+    public String MYSQL_ADDON_DB="blslrlwy0ckh6h5o0hl9";
+    static String MYSQL_ADDON_USER="usnetzlulepfmhm0";
+    public  String MYSQL_ADDON_PORT="3306";
+    static String MYSQL_ADDON_PASSWORD="dnHZhUzZNmz7zphiQtPL";
+    static String MYSQL_ADDON_URI="mysql://usnetzlulepfmhm0:dnHZhUzZNmz7zphiQtPL@blslrlwy0ckh6h5o0hl9-mysql.services.clever-cloud.com:3306/blslrlwy0ckh6h5o0hl9";
+    
+    
 
 
 Connection conn=null;
@@ -55,10 +67,11 @@ static public Connection cnx = null;
 public Connection conectar(){
 try{
 String ruta="jdbc:mysql://";
-String servidor=nomservidor+":"+puerto+"/";
+String servidor=MYSQL_ADDON_HOST+":"+MYSQL_ADDON_PORT+"/";
 Class.forName("com.mysql.jdbc.Driver");
-conn = DriverManager.getConnection(ruta+servidor+bd,user,pass);
+conn = DriverManager.getConnection(ruta+servidor+MYSQL_ADDON_DB,MYSQL_ADDON_USER,MYSQL_ADDON_PASSWORD);
 if (conn!=null){
+    
 System.out.println("Conección a base de datos listo…");
 }
 else if (conn==null){
@@ -99,7 +112,7 @@ public ConexionBD()
             //No es necesaria, se pone por compatibilidad
             Class.forName("com.mysql.jdbc.Driver");
             
-            cnx = DriverManager.getConnection(url,user,pass);
+            cnx = DriverManager.getConnection(MYSQL_ADDON_HOST,MYSQL_ADDON_USER,MYSQL_ADDON_PASSWORD);
         } 
         catch (SQLException e) 
         {

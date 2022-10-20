@@ -202,7 +202,7 @@ formWindowOpened(evt);
         setForeground(new java.awt.Color(0, 0, 255));
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(32, 178, 87));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -251,7 +251,13 @@ formWindowOpened(evt);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/admin_person_user_man_2839.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add_photo_user.png"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jLabel1);
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 280, 240));
@@ -265,7 +271,7 @@ formWindowOpened(evt);
                 btnExaminarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnExaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 510, 90, -1));
+        jPanel2.add(btnExaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 510, 100, -1));
 
         btnGuardar.setBackground(new java.awt.Color(153, 204, 255));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add_user.png"))); // NOI18N
@@ -335,7 +341,7 @@ formWindowOpened(evt);
                 btnCambioActionPerformed(evt);
             }
         });
-        jPanel2.add(btnCambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 510, -1, 30));
+        jPanel2.add(btnCambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 510, 180, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 700, 560));
 
@@ -345,8 +351,8 @@ formWindowOpened(evt);
 
         lblImagenHuella.setBackground(new java.awt.Color(255, 255, 255));
         lblImagenHuella.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImagenHuella.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/139759.png"))); // NOI18N
-        jPanel3.add(lblImagenHuella, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 260, 250));
+        lblImagenHuella.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/dactilar_huella.png"))); // NOI18N
+        jPanel3.add(lblImagenHuella, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 260, 250));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -371,7 +377,7 @@ formWindowOpened(evt);
         txtArea.setRows(5);
         jScrollPane1.setViewportView(txtArea);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 400, 390, 170));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 400, 410, 170));
         jPanel1.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, -1, -1));
 
         Lblregistro.setBackground(new java.awt.Color(255, 153, 0));
@@ -497,6 +503,32 @@ start();
     private void cbIdiomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbIdiomasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbIdiomasActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+         Api x= new Api(); 
+        javax.swing.filechooser.FileFilter filtro = new FileNameExtensionFilter("Archivo JPG(.jpg)", "jpg");
+        JFileChooser selector=new JFileChooser();
+        selector.setFileFilter(filtro);
+        selector.setDialogTitle("Abrir archivo...");
+        File ruta = new File("tarea4");
+        selector.setCurrentDirectory(ruta);
+        int resultado=selector.showOpenDialog(null);
+        if(resultado==JFileChooser.APPROVE_OPTION){
+          file=selector.getSelectedFile();
+           copia=new File(file.getAbsolutePath());
+           
+            try {
+                x.obtenerImagen(copia);
+                this.jLabel1.setIcon(new ImageIcon(x.imagen));  
+                
+                //m.leerMatriz(copia);
+            } catch (IOException ex) {
+                
+            }
+        }
+    
+                    
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments

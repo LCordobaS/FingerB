@@ -78,12 +78,12 @@ public final class Login extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         LblSelec.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        LblSelec.setForeground(new java.awt.Color(255, 91, 71));
+        LblSelec.setForeground(new java.awt.Color(32, 178, 87));
         LblSelec.setText("Seleccion de Idioma");
-        jPanel2.add(LblSelec, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, -1, -1));
+        jPanel2.add(LblSelec, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, -1, 20));
 
         JlIdioma.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JlIdioma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Maintenance_96px.png"))); // NOI18N
+        JlIdioma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/change_lenguaje.png"))); // NOI18N
         JlIdioma.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         JlIdioma.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -101,17 +101,18 @@ public final class Login extends javax.swing.JFrame {
         jPanel2.add(JlIdioma, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 160, 150));
 
         LblRegistro.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        LblRegistro.setForeground(new java.awt.Color(255, 91, 71));
+        LblRegistro.setForeground(new java.awt.Color(32, 178, 87));
+        LblRegistro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblRegistro.setText("Registro Alumno");
-        jPanel2.add(LblRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 300, 100, 30));
+        jPanel2.add(LblRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 310, 130, 20));
 
         LblBusqueda.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        LblBusqueda.setForeground(new java.awt.Color(255, 91, 71));
+        LblBusqueda.setForeground(new java.awt.Color(32, 178, 87));
         LblBusqueda.setText("Busqueda");
         jPanel2.add(LblBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, -1, 20));
 
         JlRegistro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JlRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Today_96px.png"))); // NOI18N
+        JlRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add_user_student.png"))); // NOI18N
         JlRegistro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         JlRegistro.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -129,7 +130,7 @@ public final class Login extends javax.swing.JFrame {
         jPanel2.add(JlRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 190, 160, 140));
 
         JBusqueda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        JBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Google_Drive_96px.png"))); // NOI18N
+        JBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search_user.png"))); // NOI18N
         JBusqueda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         JBusqueda.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {

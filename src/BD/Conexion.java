@@ -20,10 +20,19 @@ import javax.swing.DefaultComboBoxModel;
  * @author Isaac
  */
 public class Conexion {
+    /*
     private static final String DRIVER_CLASS="com.mysql.jdbc.Driver";
     private static final String URL="jdbc:mysql://usnetzlulepfmhm0:dnHZhUzZNmz7zphiQtPL@blslrlwy0ckh6h5o0hl9-mysql.services.clever-cloud.com:3306/blslrlwy0ckh6h5o0hl9";
     private static final String USER="usnetzlulepfmhm0";
     private static final String PASS="dnHZhUzZNmz7zphiQtPL";
+    private static Driver driver =null;
+    Connection conn=null;*/
+    private static final String DRIVER_CLASS="com.mysql.jdbc.Driver";
+
+    private static final String MYSQL_ADDON_USER="usnetzlulepfmhm0";
+    
+    private static final String MYSQL_ADDON_PASSWORD="dnHZhUzZNmz7zphiQtPL";
+    private static final String MYSQL_ADDON_URI="jdbc:mysql://blslrlwy0ckh6h5o0hl9-mysql.services.clever-cloud.com:3306/blslrlwy0ckh6h5o0hl9";
     private static Driver driver =null;
     Connection conn=null;
     
@@ -36,7 +45,7 @@ public class Conexion {
         ex.printStackTrace();
     } 
     
-    return DriverManager.getConnection(URL, USER, PASS);
+    return DriverManager.getConnection(MYSQL_ADDON_URI, MYSQL_ADDON_USER, MYSQL_ADDON_PASSWORD);
 }
     
       
@@ -69,9 +78,7 @@ public static void close(PreparedStatement stmt){
     
 }
 
-    Conexion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
     
     public ResultSet consulta(String sql){
         ResultSet res = null;
@@ -100,6 +107,8 @@ public static void close(PreparedStatement stmt){
         }
         return ListaGrupo;
     }
+    
+
 
 }
 

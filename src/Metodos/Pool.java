@@ -9,6 +9,7 @@ import java.sql.Driver;
 import javax.sql.DataSource;
 import org.apache.commons.dbcp.BasicDataSource;
 
+
 /**
  *
  * @author cosl9
@@ -18,10 +19,16 @@ public class Pool {
     
     
     public DataSource dataSource;
-    public String DRIVER_CLASS="com.mysql.jdbc.Driver";
+    /*public String DRIVER_CLASS="com.mysql.jdbc.Driver";
     public String URL="jdbc:mysql://usnetzlulepfmhm0:dnHZhUzZNmz7zphiQtPL@blslrlwy0ckh6h5o0hl9-mysql.services.clever-cloud.com:3306/blslrlwy0ckh6h5o0hl9";
     public String USER="usnetzlulepfmhm0";
+    public String PASS="dnHZhUzZNmz7zphiQtPL";*/
+     
+    public String DRIVER_CLASS="com.mysql.jdbc.Driver";
+    public String USER="usnetzlulepfmhm0";
+    
     public String PASS="dnHZhUzZNmz7zphiQtPL";
+    public String URL="jdbc:mysql://blslrlwy0ckh6h5o0hl9-mysql.services.clever-cloud.com:3306/blslrlwy0ckh6h5o0hl9";
     public Driver driver =null;
     
     public Pool(){
@@ -34,7 +41,7 @@ public class Pool {
         basicDataSource.setUsername(USER);
         basicDataSource.setPassword(PASS);
         basicDataSource.setUrl(URL);
-        basicDataSource.setMaxActive(50);
+        basicDataSource.setMaxActive(200);
     
         dataSource = (DataSource) basicDataSource;
     }

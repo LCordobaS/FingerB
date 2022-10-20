@@ -103,19 +103,26 @@ formWindowOpened(evt);
         lblImagenHuella = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         lblFoto = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        lblHora = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtClave = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
+        jPanel3 = new javax.swing.JPanel();
+        lblHora = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtClave = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel6 = new javax.swing.JLabel();
+        txtGrupo = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel7 = new javax.swing.JLabel();
+        txtCarrera = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -125,8 +132,7 @@ formWindowOpened(evt);
         setPreferredSize(new java.awt.Dimension(1360, 763));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(10, 10, 10, 10, new java.awt.Color(255, 255, 255)));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(31, 73, 125));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -134,81 +140,40 @@ formWindowOpened(evt);
 
         lblImagenHuella.setBackground(new java.awt.Color(255, 255, 255));
         lblImagenHuella.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImagenHuella.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1218532.png"))); // NOI18N
+        lblImagenHuella.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/dactilar_huella.png"))); // NOI18N
         jScrollPane4.setViewportView(lblImagenHuella);
 
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 290, 290, 290));
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 80, 270, 270));
 
         lblFoto.setBackground(new java.awt.Color(255, 255, 255));
         lblFoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/User_Accounts_alt.png"))); // NOI18N
+        lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user_dama.png"))); // NOI18N
         jScrollPane5.setViewportView(lblFoto);
 
-        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 290, 290));
-
-        jPanel2.setBackground(new java.awt.Color(0, 153, 204));
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel3.setBackground(new java.awt.Color(0, 153, 204));
-        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel3.setAlignmentX(0.0F);
-        jPanel3.setAlignmentY(0.0F);
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblHora.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        lblHora.setForeground(new java.awt.Color(255, 255, 255));
-        lblHora.setText("08:25:34 am");
-        lblHora.setToolTipText("");
-        jPanel3.add(lblHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 5, -1, -1));
-
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 600, 50));
-
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel1.setText("CLAVE");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel2.setText("NOMBRE");
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
-
-        txtClave.setEditable(false);
-        txtClave.setBackground(new java.awt.Color(153, 153, 153));
-        txtClave.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        txtClave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtClaveActionPerformed(evt);
-            }
-        });
-        jPanel4.add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 580, -1));
-
-        txtNombre.setEditable(false);
-        txtNombre.setBackground(new java.awt.Color(153, 153, 153));
-        txtNombre.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jPanel4.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 580, -1));
-
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 600, 210));
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, 620, 290));
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 270, 270));
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         txtArea.setEditable(false);
-        txtArea.setBackground(new java.awt.Color(102, 153, 255));
         txtArea.setColumns(20);
         txtArea.setRows(5);
         txtArea.setName("txtArea"); // NOI18N
         jScrollPane2.setViewportView(txtArea);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 1340, 160));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, 1350, 140));
+
+        jPanel3.setBackground(new java.awt.Color(32, 178, 87));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel3.setAlignmentX(0.0F);
+        jPanel3.setAlignmentY(0.0F);
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblHora.setFont(new java.awt.Font("Franklin Gothic Demi Cond", 1, 48)); // NOI18N
+        lblHora.setForeground(new java.awt.Color(255, 255, 255));
+        lblHora.setText("08:25:34 am");
+        lblHora.setToolTipText("");
+        jPanel3.add(lblHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 0, -1, 50));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Multiply_32px.png"))); // NOI18N
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -216,7 +181,7 @@ formWindowOpened(evt);
                 jLabel3MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 20, -1, -1));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 10, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Expand_Arrow_32px.png"))); // NOI18N
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -224,15 +189,76 @@ formWindowOpened(evt);
                 jLabel4MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 20, -1, -1));
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 10, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 48)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 48)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("SALIDAS");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 240, -1, 50));
+        jLabel5.setText("SALIDAS -");
+        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, -1, 50));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 760));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1400, 50));
+
+        jLabel2.setFont(new java.awt.Font("Franklin Gothic Demi Cond", 0, 18)); // NOI18N
+        jLabel2.setText("NOMBRE");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 460, -1, -1));
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Franklin Gothic Demi Cond", 0, 18)); // NOI18N
+        jLabel1.setText("CLAVE");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, -1, -1));
+
+        txtClave.setEditable(false);
+        txtClave.setBackground(new java.awt.Color(255, 255, 255));
+        txtClave.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        txtClave.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtClave.setBorder(null);
+        txtClave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtClaveActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 400, 20));
+
+        txtNombre.setEditable(false);
+        txtNombre.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombre.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        txtNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtNombre.setBorder(null);
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 400, 20));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 400, 20));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 400, 20));
+
+        jLabel6.setFont(new java.awt.Font("Franklin Gothic Demi Cond", 0, 18)); // NOI18N
+        jLabel6.setText("GRUPO");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 380, -1, -1));
+
+        txtGrupo.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        txtGrupo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtGrupo.setBorder(null);
+        txtGrupo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGrupoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 420, 400, 20));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 440, 400, 20));
+
+        jLabel7.setFont(new java.awt.Font("Franklin Gothic Demi Cond", 0, 18)); // NOI18N
+        jLabel7.setText("CARRERA");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 470, -1, -1));
+
+        txtCarrera.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        txtCarrera.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtCarrera.setBorder(null);
+        jPanel1.add(txtCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 500, 400, 20));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 520, 400, 20));
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/utsv.png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, -280, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1400, 770));
 
         getAccessibleContext().setAccessibleDescription("");
 
@@ -254,6 +280,10 @@ formWindowOpened(evt);
     private void txtClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClaveActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtClaveActionPerformed
+
+    private void txtGrupoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGrupoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGrupoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -526,7 +556,7 @@ Connection c=Conexion.getConexion();
 
 //Obtiene todas las huellas de la bd
 
-PreparedStatement identificarStmt = c.prepareStatement("SELECT clave, apPaterno, apMaterno, nombre, hueya, foto FROM empleado");
+PreparedStatement identificarStmt = c.prepareStatement("SELECT clave, apPaterno, apMaterno, nombre, nombreCarrera, nombreGrupo, hueya, foto FROM empleado");
 //Obtiene todas las huellas de la bd
 ResultSet rsIdentificar = identificarStmt.executeQuery();
            
@@ -568,44 +598,7 @@ if (result.isVerified()){
                 buscaEntradaStmt.setInt(1, rsIdentificar.getInt(1));
                 buscaEntradaStmt.setDate(2,new java.sql.Date(fecha.getTime()));
                 
-                ResultSet buscaEntradaRs= buscaEntradaStmt.executeQuery();
-                   j=0;
-                      while(buscaEntradaRs.next()){
-                          j++;
-                         // JOptionPane.showMessageDialog(null, Integer.toString(i));
-                      }
-                  if(buscaEntradaRs.next()){
-                      switch(j){
-                          case 1:
-                                 PreparedStatement comidaStmt= c.prepareStatement("insert into entradas(fecha, hora,"
-                                         + "salida, claveAlumno) values(?,?,?,?)");
-                                 comidaStmt.setDate(1,new java.sql.Date(fecha.getTime()));
-                                 comidaStmt.setTime(2, new java.sql.Time(fecha.getTime()));
-                                 comidaStmt.setString(3, hora);
-                                 comidaStmt.setInt(4, rsIdentificar.getInt(1));
-                                 comidaStmt.executeUpdate();
-                           break;   
-                          case 2:
-                                 PreparedStatement salidaStmt= c.prepareStatement("insert into salidas(fecha, hora,"
-                                         + "salida, claveAlumno) values(?,?,?,?)");
-                                 salidaStmt.setDate(1,new java.sql.Date(fecha.getTime()));
-                                 salidaStmt.setTime(2, new java.sql.Time(fecha.getTime()));
-                                 salidaStmt.setString(3, hora);
-                                 salidaStmt.setInt(4, rsIdentificar.getInt(1));
-                                 salidaStmt.executeUpdate();
-                              break;
-                      }
-                  }else
-                  {
-                                     PreparedStatement salidaStmt= c.prepareStatement("insert into entradas(fecha, claveAlumno,"
-                                         + "horaEntrada, entrada,destino) values(?,?,?,?,?)");
-                                 salidaStmt.setDate(1,new java.sql.Date(fecha.getTime()));
-                                 salidaStmt.setInt(2,rsIdentificar.getInt(1) );
-                                 salidaStmt.setTime(3, new java.sql.Time(fecha.getTime()));
-                                 salidaStmt.setString(4, hora);
-                                 salidaStmt.setString(5, destinoRs.getString("descripcion"));
-                                 salidaStmt.executeUpdate();
-                  }
+               
             }else
             {
                 //JOptionPane.showMessageDialog(null, "no encontramos registros");
@@ -649,12 +642,12 @@ if (result.isVerified()){
                   }else
                   {
                                      PreparedStatement salidaStmt= c.prepareStatement("insert into salidas(fecha, claveAlumno,"
-                                         + "horaEntrada, entrada,destino) values(?,?,?,?,?)");
+                                         + "salida ) values(?,?,?)");
                                  salidaStmt.setDate(1,new java.sql.Date(fecha.getTime()));
                                  salidaStmt.setInt(2,rsIdentificar.getInt(1) );
                                  salidaStmt.setTime(3, new java.sql.Time(fecha.getTime()));
-                                 salidaStmt.setString(4, hora);
-                                 salidaStmt.setString(5, "DESTINO LOCAL");
+                                 
+                                 
                                  salidaStmt.executeUpdate();
                   }
             
@@ -663,6 +656,8 @@ if (result.isVerified()){
     
     txtClave.setText(Integer.toString(rsIdentificar.getInt(1)));
     txtNombre.setText(rsIdentificar.getString(4).toUpperCase(Locale.FRENCH)+"  "+rsIdentificar.getString(2).toUpperCase(Locale.FRENCH)+"  "+rsIdentificar.getString(3).toUpperCase(Locale.FRENCH));
+    txtCarrera.setText(rsIdentificar.getString(5).toUpperCase(Locale.FRENCH));
+    txtGrupo.setText(rsIdentificar.getString(6).toUpperCase(Locale.FRENCH));
     Blob imagen = rsIdentificar.getBlob("foto");
     
  //crea la imagen de los datos guardado de las huellas guardadas en la base de datos
@@ -705,19 +700,26 @@ return template;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblHora;
     private javax.swing.JLabel lblImagenHuella;
     private clock.RelogApplet relogApplet1;
     private javax.swing.JTextArea txtArea;
+    private javax.swing.JTextField txtCarrera;
     private javax.swing.JTextField txtClave;
+    private javax.swing.JTextField txtGrupo;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 

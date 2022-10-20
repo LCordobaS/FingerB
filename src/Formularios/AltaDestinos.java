@@ -10,11 +10,14 @@ import Empleado.EmpleadoBean;
 import com.digitalpersona.onetouch.DPFPGlobal;
 import com.digitalpersona.onetouch.DPFPTemplate;
 import com.digitalpersona.onetouch.verification.DPFPVerificationResult;
+import java.awt.event.ActionListener;
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -35,6 +38,9 @@ public class AltaDestinos extends javax.swing.JFrame {
     
     public AltaDestinos() {
         initComponents();
+        
+        
+        
         
         cambioIdioma("Espanol");
    
@@ -59,6 +65,30 @@ public class AltaDestinos extends javax.swing.JFrame {
         //txtAMaterno.getDocument().addDocumentListener(documentListener);  
         txtId.setVisible(false);
     }  
+    
+    public void EliminarRegistro(){
+        Connection con= null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        EmpleadoBean empleado= null;
+        try{
+            con= Conexion.getConexion();
+            stmt.setInt(1, Integer.parseInt(txtId.getText()));
+            System.out.println(txtId);
+        EliminarRegistro();{
+        stmt = con.prepareStatement("DELETE FROM empleado WHERE clave=?");
+        
+         }
+                 int res=stmt.executeUpdate();
+                 
+                //con.close();
+            
+        } catch(Exception e){
+            System.err.println(e);
+        }
+    }
+    
+    
     public void LimpiarCajas(){
       txtClave.setText(null);
       txtAPaterno.setText(null);
@@ -69,13 +99,15 @@ public class AltaDestinos extends javax.swing.JFrame {
       cbGrupo.setSelectedItem(null);
       
   } 
+    
+    
     public void cambioIdioma(String nombreIdioma){
         
         idioma=new Idioma(nombreIdioma);
         
         
         btnCambio.setText(idioma.getProperty("cambio"));
-         jBuscar.setText(idioma.getProperty("matricula"));
+        jBuscar.setText(idioma.getProperty("matricula"));
         LblCarrera.setText(idioma.getProperty("carrera"));
         LblCuatri.setText(idioma.getProperty("cuatrimestre"));
         LblGrupo.setText(idioma.getProperty("grupo"));
@@ -89,9 +121,14 @@ public class AltaDestinos extends javax.swing.JFrame {
         
         cbIdiomas.removeAllItems();
         
+        
+        
+        
+        
         String idiomas[]={
                           idioma.getProperty("espanol"),
                           idioma.getProperty("ingles"),
+                          
                           };
         
         for(int i=0;i<idiomas.length;i++){
@@ -99,6 +136,8 @@ public class AltaDestinos extends javax.swing.JFrame {
         }
         }
 BD.ConexionBD metodo= new BD.ConexionBD();
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -116,6 +155,8 @@ BD.ConexionBD metodo= new BD.ConexionBD();
         LblConsulta = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        cbIdiomas = new javax.swing.JComboBox<>();
+        btnCambio = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         LblName = new javax.swing.JLabel();
         LblApp = new javax.swing.JLabel();
@@ -136,9 +177,10 @@ BD.ConexionBD metodo= new BD.ConexionBD();
         cbCuatri = new javax.swing.JComboBox<>();
         cbGrupo = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        LblBarra = new javax.swing.JLabel();
-        btnCambio = new javax.swing.JLabel();
-        cbIdiomas = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtAlumnos = new javax.swing.JTable();
+        btnCarTab = new javax.swing.JButton();
+        txtCampo = new javax.swing.JTextField();
 
         jButton2.setText("jButton2");
 
@@ -170,7 +212,7 @@ BD.ConexionBD metodo= new BD.ConexionBD();
         LblConsulta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         LblConsulta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblConsulta.setText("Consulta de Estudiante");
-        jPanel2.add(LblConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
+        jPanel2.add(LblConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Multiply_32px.png"))); // NOI18N
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -179,7 +221,7 @@ BD.ConexionBD metodo= new BD.ConexionBD();
                 jLabel1MouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 0, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Expand_Arrow_32px.png"))); // NOI18N
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -188,9 +230,30 @@ BD.ConexionBD metodo= new BD.ConexionBD();
                 jLabel2MouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 0, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 690, 40));
+        cbIdiomas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbIdiomasItemStateChanged(evt);
+            }
+        });
+        cbIdiomas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbIdiomasActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cbIdiomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, -1));
+
+        btnCambio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Globe_32px.png"))); // NOI18N
+        btnCambio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCambio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCambioMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnCambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, -1, 30));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1110, 40));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -198,17 +261,17 @@ BD.ConexionBD metodo= new BD.ConexionBD();
 
         LblName.setFont(new java.awt.Font("Keep Calm Med", 0, 11)); // NOI18N
         LblName.setText("Nombre");
-        jPanel3.add(LblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+        jPanel3.add(LblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
         LblApp.setFont(new java.awt.Font("Keep Calm Med", 0, 11)); // NOI18N
         LblApp.setText("Apellido Paterno");
-        jPanel3.add(LblApp, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+        jPanel3.add(LblApp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
         LblApm.setFont(new java.awt.Font("Keep Calm Med", 0, 11)); // NOI18N
         LblApm.setText("Apellido Materno");
-        jPanel3.add(LblApm, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, -1, -1));
-        jPanel3.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 370, -1));
-        jPanel3.add(txtAPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 290, -1));
+        jPanel3.add(LblApm, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
+        jPanel3.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 290, -1));
+        jPanel3.add(txtAPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 290, -1));
 
         txtClave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -235,11 +298,11 @@ BD.ConexionBD metodo= new BD.ConexionBD();
                 txtClaveVetoableChange(evt);
             }
         });
-        jPanel3.add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 290, -1));
+        jPanel3.add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 290, -1));
 
         jBuscar.setFont(new java.awt.Font("Perpetua Titling MT", 3, 12)); // NOI18N
         jBuscar.setText("MATRICULA");
-        jPanel3.add(jBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, -1, 40));
+        jPanel3.add(jBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, -1, 40));
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Search_32px_2.png"))); // NOI18N
         btnBuscar.setBorder(null);
@@ -253,26 +316,26 @@ BD.ConexionBD metodo= new BD.ConexionBD();
                 btnBuscarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, -1, -1));
+        jPanel3.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
 
         txtAMaterno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAMaternoActionPerformed(evt);
             }
         });
-        jPanel3.add(txtAMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 290, -1));
+        jPanel3.add(txtAMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 290, -1));
 
         LblCarrera.setFont(new java.awt.Font("Keep Calm Med", 0, 11)); // NOI18N
         LblCarrera.setText("Carrera:");
-        jPanel3.add(LblCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, -1, -1));
+        jPanel3.add(LblCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
 
         LblGrupo.setFont(new java.awt.Font("Keep Calm Med", 0, 11)); // NOI18N
         LblGrupo.setText("Grupo:");
-        jPanel3.add(LblGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, -1, -1));
+        jPanel3.add(LblGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, -1, -1));
 
         LblCuatri.setFont(new java.awt.Font("Keep Calm Med", 0, 11)); // NOI18N
         LblCuatri.setText("Cuatrimestre:");
-        jPanel3.add(LblCuatri, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, -1, -1));
+        jPanel3.add(LblCuatri, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
 
         btnBorrar.setBackground(new java.awt.Color(255, 102, 102));
         btnBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/button_cancel.png"))); // NOI18N
@@ -283,10 +346,10 @@ BD.ConexionBD metodo= new BD.ConexionBD();
                 btnBorrarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 360, 90, -1));
+        jPanel3.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, 90, -1));
 
         txtId.setEnabled(false);
-        jPanel3.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 60, -1));
+        jPanel3.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 60, -1));
 
         btnModificar.setBackground(new java.awt.Color(0, 153, 0));
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/revert.png"))); // NOI18N
@@ -298,7 +361,7 @@ BD.ConexionBD metodo= new BD.ConexionBD();
                 btnModificarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 100, -1));
+        jPanel3.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, 100, -1));
 
         cbCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "TSU En mantenimiento Area Industrial", "TSU En Mecatronica Area Automatizacion", "TSU En Tecnologias de la informacion Area desarrollo de software multiplataforma", "TSU En Quimica Area Industrial", "TSU En Contaduria ", "TSU En Administracion Area Capital Humano", "TSU En Mecanica Area Automotriz", "TSU En Energias Renovables Area Ahorro y calidad", "ING Mantenimiento Industrial", "ING Mecatronica", "ING Tecnologias de la Informacion", "ING Quimica", "LIC En Contaduria", "LIC Gestion del Captal Humano", "ING Metal Mecanica", " " }));
         cbCarrera.addActionListener(new java.awt.event.ActionListener() {
@@ -306,13 +369,13 @@ BD.ConexionBD metodo= new BD.ConexionBD();
                 cbCarreraActionPerformed(evt);
             }
         });
-        jPanel3.add(cbCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 220, 270, -1));
+        jPanel3.add(cbCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 270, -1));
 
         cbCuatri.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Primero", "Segundo", "Tercero", "Cuarto", "Quinto", "Sexto", "Septimo", "Octavo", "Noveno", "Decimo", "Undecimo", " " }));
-        jPanel3.add(cbCuatri, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 140, -1));
+        jPanel3.add(cbCuatri, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 140, -1));
 
         cbGrupo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "101", "102", "103", "104", "105", "201", "202", "203", "304", "305", "401", "402", "403", "404", "405", "501", "502", "503", "504", "505", "601", "602", "603", "604", "605", "701", "702", "703", "704", "705", "801", "802", "803", "804", "805", "901", "902", "903", "904", "905", "1001", "1002", "1003", "1004", "1005" }));
-        jPanel3.add(cbGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, 140, -1));
+        jPanel3.add(cbGrupo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 140, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Next_page_L64px.png"))); // NOI18N
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -323,29 +386,52 @@ BD.ConexionBD metodo= new BD.ConexionBD();
         });
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, -1, -1));
 
-        LblBarra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Menu_32px_1.png"))); // NOI18N
-        LblBarra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        LblBarra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LblBarraMouseClicked(evt);
+        jtAlumnos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Matricula", "Nombre", "Apellido Paterno", "Apellido Materno", "Carrera", "Cuatrimestre", "Grupo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
             }
         });
-        jPanel3.add(LblBarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jScrollPane2.setViewportView(jtAlumnos);
 
-        btnCambio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Globe_32px.png"))); // NOI18N
-        btnCambio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCambio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCambioMouseClicked(evt);
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 730, 440));
+
+        btnCarTab.setText("Cargar Datos");
+        btnCarTab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCarTabActionPerformed(evt);
             }
         });
-        jPanel3.add(btnCambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(-135, 50, -1, 30));
+        jPanel3.add(btnCarTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 530, -1, -1));
 
-        jPanel3.add(cbIdiomas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 100, -1));
+        txtCampo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCampoActionPerformed(evt);
+            }
+        });
+        txtCampo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCampoKeyTyped(evt);
+            }
+        });
+        jPanel3.add(txtCampo, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 150, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 690, 460));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 1110, 570));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 540));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 640));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -416,25 +502,26 @@ BD.ConexionBD metodo= new BD.ConexionBD();
         EmpleadoBean empleado= null;
         try{
             con= Conexion.getConexion();
-stmt = con.prepareStatement("DELETE FROM empleado WHERE clave=?");
-            
-                
-                
-                stmt.setInt(1, Integer.parseInt(txtId.getText()));
-            
-                int res=stmt.executeUpdate();
-                
-                
-                if(res > 0){
-                    JOptionPane.showMessageDialog(null, "Estudiante Eliminado");
-                } else{
-                    JOptionPane.showMessageDialog(null, "Imposible Eliminar");
-                }
+            stmt.setInt(1, Integer.parseInt(txtId.getText()));
+            System.out.println(txtId);
+        EliminarRegistro();{
+        stmt = con.prepareStatement("DELETE FROM empleado WHERE clave=?");
+        
+         }
+                 int res=stmt.executeUpdate();
+                 
                 con.close();
-            LimpiarCajas();
+            
         } catch(Exception e){
             System.err.println(e);
         }
+        
+        //if(JOptionPane.showConfirmDialog(rootPane, "Se eliminará el registro, ¿desea continuar?",
+        //"Eliminar Registro", JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)EliminarRegistro();
+                    
+                
+
+           
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -500,16 +587,6 @@ stmt = con.prepareStatement("UPDATE empleado SET nombre=?, ApPaterno=?, ApMatern
         }
     }//GEN-LAST:event_btnCambioMouseClicked
 
-    private void LblBarraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblBarraMouseClicked
-       AnimationClass lenguaje =  new AnimationClass();
-       lenguaje.jLabelXLeft(-135, 10, 10, 5, btnCambio);
-       
-        AnimationClass lenguajes =  new AnimationClass();
-       lenguajes.jLabelXLeft(10, -135, 10, 5, btnCambio);
-       
-      
-    }//GEN-LAST:event_LblBarraMouseClicked
-
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         
         int result = JOptionPane.showConfirmDialog(null, "Desea salir de la captura de datos","Exit",JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE);
@@ -521,6 +598,61 @@ stmt = con.prepareStatement("UPDATE empleado SET nombre=?, ApPaterno=?, ApMatern
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
        this.setState(CapturaDatos.ICONIFIED);
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void btnCarTabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarTabActionPerformed
+        try{
+            DefaultTableModel modelo = new DefaultTableModel();
+            jtAlumnos.setModel(modelo);
+            
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            
+            Conexion conn = new Conexion();
+            Connection con = conn.getConexion();
+            
+            String sql = "select clave,Nombre, ApPaterno, ApMaterno, NombreCarrera, NombreCuatrimestre, NombreGrupo from empleado";
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+             
+            ResultSetMetaData rsMd = rs.getMetaData();
+            int cantidadColumnas = rsMd.getColumnCount();
+            
+            modelo.addColumn("Matricula");
+            modelo.addColumn("Nombre");
+            modelo.addColumn("Apellido Paterno");
+            modelo.addColumn("Apellido Materno");
+            modelo.addColumn("Carrera");
+            modelo.addColumn("Cuatrimestre");
+            modelo.addColumn("Grupo");
+            
+            while(rs.next()){
+                Object[] filas = new  Object[cantidadColumnas];
+                
+                for(int i = 0; i<cantidadColumnas; i++){
+                    filas[i] = rs.getObject(i+1);
+                }
+                modelo.addRow(filas);
+            }
+        }catch(SQLException ex){
+            System.err.println(ex.toString());
+        }
+    }//GEN-LAST:event_btnCarTabActionPerformed
+
+    private void cbIdiomasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbIdiomasActionPerformed
+       
+    }//GEN-LAST:event_cbIdiomasActionPerformed
+
+    private void txtCampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCampoActionPerformed
+
+    private void txtCampoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCampoKeyTyped
+       
+    }//GEN-LAST:event_txtCampoKeyTyped
+
+    private void cbIdiomasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbIdiomasItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbIdiomasItemStateChanged
 
 //    DocumentListener documentListener = new DocumentListener() {
 //      public void changedUpdate(DocumentEvent documentEvent) {
@@ -585,7 +717,6 @@ stmt = con.prepareStatement("UPDATE empleado SET nombre=?, ApPaterno=?, ApMatern
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LblApm;
     private javax.swing.JLabel LblApp;
-    private javax.swing.JLabel LblBarra;
     private javax.swing.JLabel LblCarrera;
     private javax.swing.JLabel LblConsulta;
     private javax.swing.JLabel LblCuatri;
@@ -594,6 +725,7 @@ stmt = con.prepareStatement("UPDATE empleado SET nombre=?, ApPaterno=?, ApMatern
     private javax.swing.JButton btnBorrar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JLabel btnCambio;
+    private javax.swing.JButton btnCarTab;
     private javax.swing.JButton btnModificar;
     private javax.swing.JComboBox<String> cbCarrera;
     private javax.swing.JComboBox<String> cbCuatri;
@@ -608,9 +740,12 @@ stmt = con.prepareStatement("UPDATE empleado SET nombre=?, ApPaterno=?, ApMatern
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jtAlumnos;
     private javax.swing.JTextField txtAMaterno;
     private javax.swing.JTextField txtAPaterno;
+    private javax.swing.JTextField txtCampo;
     public javax.swing.JTextField txtClave;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;

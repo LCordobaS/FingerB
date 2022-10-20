@@ -1,6 +1,7 @@
 create database huella;
 use huella;
 
+DROP TABLE IF EXISTS `empleado`;
 CREATE TABLE IF NOT EXISTS `empleado` (
   `clave` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `apPaterno` varchar(60) DEFAULT NULL,
@@ -9,8 +10,8 @@ CREATE TABLE IF NOT EXISTS `empleado` (
   `calle` varchar(60) DEFAULT NULL,
   `noExterior` varchar(20) DEFAULT NULL,
   `colonia` varchar(60) DEFAULT NULL,
-  `Municipio` varchar(60) DEFAULT NULL,
-  `Estado` varchar(60) DEFAULT NULL,
+  `IdMunicipio` int not NULL,
+  `IdEstados` int not NULL,
   `cp` varchar(20) DEFAULT NULL,
   `telefono` varchar(20) DEFAULT NULL,
   `cel` varchar(20) DEFAULT NULL,
@@ -18,10 +19,15 @@ CREATE TABLE IF NOT EXISTS `empleado` (
   `hueya` blob,
   `hueya1` blob,
   `foto` blob,
-  `Carrera` int not null,
-  `Cuatrimestre` int not null,
-  `Grupo` int not null,
-  PRIMARY KEY (`clave`)
+  `IdCarrera` int not null,
+  `IdCuatrimestre` int not null,
+  `IdGrupo` int not null,
+  PRIMARY KEY (`clave`),
+  FOREIGN KEY (`IdCarrera`) references `Carrera`(`IdCarrera`),
+  FOREIGN KEY (`IdCuatrimestre`) references `Cuatrimestre`(`IdCuatrimestre`),
+  FOREIGN KEY (`IdGrupo`) references `Grupo`(`IdGrupo`),
+  FOREIGN KEY (`IdMunicipio`) references `municipios`(`IdMunicipio`),
+  FOREIGN KEY (`IdEstados`) references `estados`(`IdEstados`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 # Dumping data for table huellas.empleado: 1 rows
@@ -100,18 +106,94 @@ IdCarrera int not null,
 NombreCarrera varchar (50) not null,
 primary key (IdCarrera));
 
+insert into Carrera(IdCarrera, NombreCarrera) values
+(1,'TSU En mantenimiento Area Industrial'),
+(2, 'TSU En Mecatronica Area Automatizacion'),
+(3,'TSU En Tecnologias de la informacion Area desarrollo de software multiplataforma'),
+(4,'TSU En Quimica Area Industrial'),
+(5,'TSU En Contaduria'),
+(6,'TSU En Administracion Area Capital Humano'),
+(7,'TSU En Mecanica Area Automotriz'),
+(8,'TSU En Energias Renovables Area Ahorro y calidad'),
+(9,'ING Mantenimiento Industrial'),
+(10,'ING Mecatronica'),
+(11,'ING Tecnologias de la Informacion'),
+(12,'ING Quimica'),
+(13,'LIC En Contaduria'),
+(14,'LIC Gestion del Captal Humano'),
+(15,'ING Metal Mecanica');
+
 
 create table Cuatrimestre(
 IdCuatrimestre int not null,
 NumeroCuatrimestre int not null,
 primary key (IdCuatrimestre));
 
+insert into Cuatrimestre(IdCuatrimestre, NumeroCuatrimestre) values
+(1,'Primero'),
+(2,'Segundo'),
+(3,'Tercero'),
+(4,'Cuarto'),
+(5,'Quinto'),
+(6,'Sexto'),
+(7,'Septimo'),
+(8,'Octavo'),
+(9,'Noveno'),
+(10,'Decimo'),
+(11,'Undecimo');
 
 create table Grupo(
 IdGrupo int not null,
 NumeroGrupo int not null,
 Modalidad varchar (30) not null,
 primary key (IdGrupo));
+
+insert into Grupo(IdGrupo, NumeroGrupo) values
+(1,101),
+(2,102),
+(3,103),
+(4,104),
+(5,105),
+(6,201),
+(7,202),
+(8,203),
+(9,304),
+(10,305),
+(11,401),
+(12,402),
+(13,403),
+(14,404),
+(15,405),
+(16,501),
+(17,502),
+(18,503),
+(19,504),
+(20,505),
+(21,601),
+(22,602),
+(23,603),
+(24,604),
+(25,605),
+(26,701),
+(27,702),
+(28,703),
+(29,704),
+(30,705),
+(31,801),
+(32,802),
+(33,803),
+(34,804),
+(35,805),
+(36,901),
+(37,902),
+(38,903),
+(39,904),
+(40,905),
+(41,1001),
+(42,1002),
+(43,1003),
+(44,1004),
+(45,1005);
 
 DROP TABLE IF EXISTS estados;
 CREATE TABLE estados(

@@ -29,7 +29,7 @@ PreparedStatement pst = null;
 ResultSet result = null;
 
 //Creamos la Consulta SQL
-String SSQL = "SELECT * FROM Cuatrimestre ORDER BY IdCuatrimestre ASC";
+String SSQL = "SELECT * FROM cuatrimestre ORDER BY IdCuatrimestre ASC";
 
 //Establecemos bloque try-catch-finally
 try {
